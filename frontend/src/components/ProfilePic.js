@@ -10,8 +10,8 @@ export default function ProfilePic({ changeprofile }) {
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "insta-clone");
-    data.append("cloud_name", "cantacloud2");
-    fetch("https://api.cloudinary.com/v1_1/cantacloud2/image/upload", {
+    data.append("cloud_name", "daxfgrt9j");
+    fetch("https://api.cloudinary.com/v1_1/daxfgrt9j/image/upload", {
       method: "post",
       body: data,
     })

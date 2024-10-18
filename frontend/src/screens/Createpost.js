@@ -4,14 +4,27 @@ import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 
 export default function Createpost() {
-  const [body, setBody] = useState("");
-  const [image, setImage] = useState("")
-  const [url, setUrl] = useState("")
+var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
+const [body, setBody] = useState("");
+const [image, setImage] = useState("")
+const [url, setUrl] = useState("")
+const [user, setUser] = useState("")
+const [pic, setPic] = useState([]);
+const [changePic, setChangePic] = useState(false)
   const navigate = useNavigate()
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg)
   const notifyB = (msg) => toast.success(msg)
+
+
+  const changeprofile = () => {
+    if (changePic) {
+      setChangePic(false)
+    } else {
+      setChangePic(true)
+    }
+  }
 
 
   useEffect(() => {
@@ -51,8 +64,8 @@ export default function Createpost() {
     const data = new FormData()
     data.append("file", image)
     data.append("upload_preset", "insta-clone")
-    data.append("cloud_name", "cantacloud2")
-    fetch("https://api.cloudinary.com/v1_1/cantacloud2/image/upload", {
+    data.append("cloud_name", "daxfgrt9j")
+    fetch("https://api.cloudinary.com/v1_1/daxfgrt9j/image/upload", {
       method: "post",
       body: data
     }).then(res => res.json())
@@ -82,6 +95,7 @@ export default function Createpost() {
         <img
           id="output"
           src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+          alt=""
         />
         <input
           type="file"
@@ -96,12 +110,16 @@ export default function Createpost() {
       <div className="details">
         <div className="card-header">
           <div className="card-pic">
-            <img
-              src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
+              <div className="profile-pic">
+          <img 
+           style={{width:"25px",height:"25px",borderRadius:"50%",marginTop:"2px",marginLeft:"8px"}}
+            onClick={changeprofile}
+            src={user.Photo ? user.Photo : picLink}
+            alt=""
+          />
+        </div>
           </div>
-          <h5>Ramesh</h5>
+          <h5>{JSON.parse(localStorage.getItem("user")).name}</h5>
         </div>
         <textarea value={body} onChange={(e) => {
           setBody(e.target.value)

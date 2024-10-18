@@ -1,5 +1,4 @@
-module.exports = {
-    mongoUrl: "mongodb+srv://FlyingPanda730:UgpngUX6DVAx1Xq0@cluster0.ormku05.mongodb.net/?retryWrites=true&w=majority",
-    Jwt_secret: "faslkfocvneofu"
-
-};
+module.exports={
+    mongoUrl:"mongodb+srv://deepak:Zo376CkbLkQoo8Qa@cluster0.hwyit.mongodb.net/?retryWrites=true&w=majority",
+    Jwt_secret:"ttgshvdgveyfshgfjgryvd"
+}
